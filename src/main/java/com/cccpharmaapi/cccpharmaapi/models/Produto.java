@@ -3,7 +3,7 @@ package com.cccpharmaapi.cccpharmaapi.models;
 import javax.persistence.*;
 
 @Entity
-public class produto {
+public class Produto {
 
     @Column
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -21,15 +21,8 @@ public class produto {
     @Column
     private Double preco;
 
-    @Column
-    private int quantidade;
-
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -62,13 +55,5 @@ public class produto {
 
     public void setPreco(Double preco) {
         this.preco = preco;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
     }
 }
