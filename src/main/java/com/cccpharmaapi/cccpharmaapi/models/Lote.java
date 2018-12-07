@@ -8,7 +8,7 @@ public class Lote {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
-    @OneToOne
+    @ManyToOne
     private Estoque estoque;
 
     @Column
