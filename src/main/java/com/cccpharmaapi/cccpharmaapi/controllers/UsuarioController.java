@@ -32,18 +32,23 @@ public class UsuarioController {
 
     @RequestMapping(method = RequestMethod.GET, value="/usuarios/{id}")
     @ResponseBody
-    public Optional<Usuario> findById(@PathVariable("id") Integer id) {
-        return usuarioService.findById(id);
+    public Usuario findById(@PathVariable("id") Integer id) {
+        Usuario res = null;
+        Optional<Usuario> costumer = usuarioService.findById(id);
+        if (costumer.isPresent()) {
+            res = costumer.get();
+        }
+
+        return res;
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/usuarios/{id}/password")
     @ResponseBody
     public Map<String, String> getPassword(@PathVariable("id") Integer id) {
         Map<String, String> res = null;
-        Optional<Usuario> costumer = findById(id);
+        Usuario usuario = findById(id);
 
-        if (costumer.isPresent()) {
-            Usuario usuario = costumer.get();
+        if (usuario != null) {
             res.put(usuario.getLogin(), usuario.getPassword());
         }
 

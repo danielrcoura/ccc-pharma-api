@@ -7,7 +7,10 @@ public class Produto {
 
     @Column
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    private Integer id;
+
+    @Column
+    private String codigo;
 
     @Column
     private String nome;
@@ -21,8 +24,16 @@ public class Produto {
     @Column
     private Double preco;
 
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNome() {
