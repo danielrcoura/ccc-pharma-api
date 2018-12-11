@@ -20,4 +20,8 @@ public interface EstoqueService {
     Estoque update(Estoque estoque);
 
     void delete(Estoque estoque);
+
+    void decrementaEstoque(Integer estoqueId, int valor);
+
+    void incrementaEstoque(Integer estoqueId, int valor);
 }
