@@ -11,8 +11,22 @@ public class Lote {
     @ManyToOne
     private Estoque estoque;
 
+    @ManyToOne
+    private Venda venda;
+
     @Column
-    private int quantidade;
+    private Integer quantidade;
+
+    @Column
+    private Double valor;
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
 
     public int getId() {
         return id;
@@ -26,11 +40,19 @@ public class Lote {
         this.estoque = estoque;
     }
 
-    public int getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public Venda getVenda() {
+        return venda;
+    }
+
+    public void setVenda(Venda venda) {
+        this.venda = venda;
     }
 }
