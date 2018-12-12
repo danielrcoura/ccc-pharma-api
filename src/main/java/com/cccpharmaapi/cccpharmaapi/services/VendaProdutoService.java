@@ -13,7 +13,5 @@ public interface VendaProdutoService {
 
     VendaProduto create(VendaProduto vendaProduto);
 
-    VendaProduto update(VendaProduto vendaProduto);
-
     void delete(VendaProduto vendaProduto);
 }
