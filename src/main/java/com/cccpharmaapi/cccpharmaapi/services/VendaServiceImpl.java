@@ -23,8 +23,11 @@ public class VendaServiceImpl implements VendaService {
     }
 
     @Override
-    public Optional<Venda> findById(Integer id) {
-        return vendaRepository.findById(id);
+    public Venda findById(Integer id) {
+        Optional<Venda> costumer = vendaRepository.findById(id);
+        Venda res = (costumer.isPresent()) ? costumer.get() : null;
+
+        return res;
     }
 
     @Override
@@ -35,10 +38,5 @@ public class VendaServiceImpl implements VendaService {
             vendaProdutoService.create(vendaProduto);
 
         return vendaRepository.save(venda);
-    }
-
-    @Override
-    public void delete(Venda venda) {
-        vendaRepository.deleteById(venda.getVendaId());
     }
 }

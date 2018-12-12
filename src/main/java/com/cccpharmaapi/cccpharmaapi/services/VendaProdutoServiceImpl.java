@@ -2,6 +2,7 @@ package com.cccpharmaapi.cccpharmaapi.services;
 
 import com.cccpharmaapi.cccpharmaapi.models.Estoque;
 import com.cccpharmaapi.cccpharmaapi.models.Produto;
+import com.cccpharmaapi.cccpharmaapi.models.Venda;
 import com.cccpharmaapi.cccpharmaapi.models.VendaProduto;
 import com.cccpharmaapi.cccpharmaapi.repositories.VendaProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,11 @@ public class VendaProdutoServiceImpl implements VendaProdutoService {
     }
 
     @Override
-    public Optional<VendaProduto> findById(Integer id) {
-        return vendaProdutoRepository.findById(id);
+    public VendaProduto findById(Integer id) {
+        Optional<VendaProduto> costumer = vendaProdutoRepository.findById(id);
+        VendaProduto res = (costumer.isPresent()) ? costumer.get() : null;
+
+        return res;
     }
 
     @Override
@@ -34,10 +38,5 @@ public class VendaProdutoServiceImpl implements VendaProdutoService {
         Estoque estoque = estoqueService.getEstoqueMenorValidade(produto);
         estoqueService.decrementaEstoque(estoque.getId(), vendaProduto.getQuatidade());
         return vendaProdutoRepository.save(vendaProduto);
-    }
-
-    @Override
-    public void delete(VendaProduto vendaProduto) {
-        vendaProdutoRepository.deleteById(vendaProduto.getId());
     }
 }

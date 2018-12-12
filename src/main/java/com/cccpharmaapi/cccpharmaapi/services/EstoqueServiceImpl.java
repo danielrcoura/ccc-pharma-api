@@ -21,8 +21,11 @@ public class EstoqueServiceImpl implements EstoqueService {
     }
 
     @Override
-    public Optional<Estoque> findById(Integer id) {
-        return estoqueRepository.findById(id);
+    public Estoque findById(Integer id) {
+        Optional<Estoque> costumer = estoqueRepository.findById(id);
+        Estoque res = (costumer.isPresent()) ? costumer.get() : null;
+
+        return res;
     }
 
     @Override
@@ -33,11 +36,6 @@ public class EstoqueServiceImpl implements EstoqueService {
     @Override
     public Estoque update(Estoque estoque) {
         return estoqueRepository.saveAndFlush(estoque);
-    }
-
-    @Override
-    public void delete(Estoque estoque) {
-        estoqueRepository.deleteById(estoque.getId());
     }
 
     @Override

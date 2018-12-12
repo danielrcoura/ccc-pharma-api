@@ -33,17 +33,6 @@ public class ProdutoController {
         return res;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/produtos/{codigo}")
-    @ResponseBody
-    public Produto findByCodigo(@PathVariable("codigo") String codigo) {
-        Produto res = null;
-        Optional<Produto> costumer = produtoService.findByCodigo(codigo);
-
-        if (costumer.isPresent()) res = costumer.get();
-
-        return res;
-    }
-
     @RequestMapping(method = RequestMethod.POST, value = "/produtos/add")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody

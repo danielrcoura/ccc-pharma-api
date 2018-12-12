@@ -10,13 +10,11 @@ public interface EstoqueService {
 
     List<Estoque> findAll();
 
-    Optional<Estoque> findById(Integer id);
+    Estoque findById(Integer id);
 
     Estoque create(Estoque estoque);
 
     Estoque update(Estoque estoque);
-
-    void delete(Estoque estoque);
 
     void decrementaEstoque(Integer estoqueId, int valor);
 

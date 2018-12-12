@@ -9,9 +9,7 @@ public interface VendaProdutoService {
 
     List<VendaProduto> findAll();
 
-    Optional<VendaProduto> findById(Integer id);
+    VendaProduto findById(Integer id);
 
     VendaProduto create(VendaProduto vendaProduto);
-
-    void delete(VendaProduto vendaProduto);
 }
