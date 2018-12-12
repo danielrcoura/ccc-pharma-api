@@ -3,13 +3,16 @@ package com.cccpharmaapi.cccpharmaapi.models;
 import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "estoques")
 public class Estoque {
 
     @Column
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
+    @JoinColumn( name = "codigo_id")
     private Produto produto;
 
     @Column

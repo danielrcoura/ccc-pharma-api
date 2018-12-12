@@ -3,10 +3,12 @@ package com.cccpharmaapi.cccpharmaapi.services;
 import com.cccpharmaapi.cccpharmaapi.models.Estoque;
 import com.cccpharmaapi.cccpharmaapi.repositories.EstoqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class EstoqueServiceImpl implements EstoqueService {
 
     @Autowired
@@ -20,16 +22,6 @@ public class EstoqueServiceImpl implements EstoqueService {
     @Override
     public Optional<Estoque> findById(Integer id) {
         return estoqueRepository.findById(id);
-    }
-
-    @Override
-    public Boolean verifyValidade(Integer estoqueId) {
-        return null;
-    }
-
-    @Override
-    public Boolean verifyQuantidade(Integer estoqueId) {
-        return null;
     }
 
     @Override

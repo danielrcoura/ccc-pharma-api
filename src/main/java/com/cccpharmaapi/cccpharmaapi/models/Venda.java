@@ -1,37 +1,56 @@
 package com.cccpharmaapi.cccpharmaapi.models;
 
 import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 @Entity
+@Table(name = "vendas")
 public class Venda {
 
+    @Id
     @Column
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
-
-    @ManyToOne
-    private Usuario comprador;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer vendaId;
 
     @Column
-    private Double valor;
+    private Double valorTotal;
 
-    public Integer getId() {
-        return id;
+    @OneToMany(mappedBy = "venda")
+    private List<VendaProduto> vendas;
+
+    @Column
+    private Date data;
+
+    public Integer getVendaId() {
+        return vendaId;
     }
 
-    public Usuario getComprador() {
-        return comprador;
+    public void setVendaId(Integer vendaId) {
+        this.vendaId = vendaId;
     }
 
-    public void setComprador(Usuario comprador) {
-        this.comprador = comprador;
+    public Double getValorTotal() {
+        return valorTotal;
     }
 
-    public Double getValor() {
-        return valor;
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
+    public List<VendaProduto> getVendas() {
+        return vendas;
+    }
+
+    public void setVendas(List<VendaProduto> vendas) {
+        this.vendas = vendas;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 }

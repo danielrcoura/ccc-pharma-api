@@ -11,10 +11,6 @@ public interface EstoqueService {
 
     Optional<Estoque> findById(Integer id);
 
-    Boolean verifyValidade(Integer estoqueId);
-
-    Boolean verifyQuantidade(Integer estoqueId);
-
     Estoque create(Estoque estoque);
 
     Estoque update(Estoque estoque);

@@ -1,13 +1,12 @@
 package com.cccpharmaapi.cccpharmaapi.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "usuarios")
 public class Usuario {
 
+    @Id
     @Column
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
