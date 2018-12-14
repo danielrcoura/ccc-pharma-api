@@ -4,19 +4,18 @@ import com.cccpharmaapi.cccpharmaapi.models.Venda;
 import com.cccpharmaapi.cccpharmaapi.models.VendaProduto;
 import com.cccpharmaapi.cccpharmaapi.services.VendaProdutoService;
 import com.cccpharmaapi.cccpharmaapi.services.VendaProdutoServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/vendaproduto")
 public class VendaProdutoController {
 
-    private VendaProdutoService vendaProdutoService = new VendaProdutoServiceImpl();
+    @Autowired
+    private VendaProdutoService vendaProdutoService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/vendaproduto/all")
     @ResponseBody
