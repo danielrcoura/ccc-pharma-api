@@ -16,20 +16,17 @@ public class EstoqueController {
     @Autowired
     private EstoqueService estoqueService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/estoque/all")
-    @ResponseBody
+    @RequestMapping(method = RequestMethod.GET, value = "/all")
     public List<Estoque> getAllVendas() {
         return estoqueService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/estoque/{id}")
-    @ResponseBody
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public Estoque getVenda(@PathVariable("id") Integer id) {
         return estoqueService.findById(id);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/estoque/add")
-    @ResponseBody
+    @RequestMapping(method = RequestMethod.PUT, value = "/add")
     public Estoque createEstoque(Estoque estoque) {
         return estoqueService.create(estoque);
     }

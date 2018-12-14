@@ -18,14 +18,12 @@ public class ProdutoController {
     @Autowired
     private ProdutoService produtoService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/produtos/all")
-    @ResponseBody
+    @RequestMapping(method = RequestMethod.GET, value = "/all")
     public List<Produto> findAll(){
         return produtoService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/produtos/{id}")
-    @ResponseBody
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public Produto findById(@PathVariable("id") Integer id){
         Produto res = null;
         Optional<Produto> produto = produtoService.findById(id);
@@ -35,21 +33,18 @@ public class ProdutoController {
         return res;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/produtos/add")
+    @RequestMapping(method = RequestMethod.POST, value = "/add")
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
     public Produto addProduto(Produto produto){
         return produtoService.create(produto);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/produtos/delete")
-    @ResponseBody
     public void removeProduto(Produto produto){
         produtoService.delete(produto);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/produtos/update")
-    @ResponseBody
     public Produto updateProduto(Produto produto) {
         return produtoService.update(produto);
     }

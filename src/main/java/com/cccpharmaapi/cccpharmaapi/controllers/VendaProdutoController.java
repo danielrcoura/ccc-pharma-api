@@ -17,14 +17,12 @@ public class VendaProdutoController {
     @Autowired
     private VendaProdutoService vendaProdutoService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/vendaproduto/all")
-    @ResponseBody
+    @RequestMapping(method = RequestMethod.GET, value = "/all")
     public List<VendaProduto> getAllVendas() {
         return vendaProdutoService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/vendaproduto/{id}")
-    @ResponseBody
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public VendaProduto getVenda(@PathVariable("id") Integer id) {
         return vendaProdutoService.findById(id);
     }

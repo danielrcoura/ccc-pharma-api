@@ -19,21 +19,18 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @RequestMapping(method = RequestMethod.POST, value="/usuarios/add")
+    @RequestMapping(method = RequestMethod.POST, value="/add")
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
     public Usuario addUsuario(@RequestBody Usuario usuario) {
         return usuarioService.create(usuario);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value="/usuarios/all")
-    @ResponseBody
+    @RequestMapping(method = RequestMethod.GET, value="/all")
     public List<Usuario> findAll() {
         return usuarioService.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value="/usuarios/{id}")
-    @ResponseBody
+    @RequestMapping(method = RequestMethod.GET, value="/{id}")
     public Usuario findById(@PathVariable("id") Integer id) {
         Usuario res = null;
         Optional<Usuario> costumer = usuarioService.findById(id);
@@ -44,8 +41,7 @@ public class UsuarioController {
         return res;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value="/usuarios/{id}/password")
-    @ResponseBody
+    @RequestMapping(method = RequestMethod.GET, value="/{id}/password")
     public Map<String, String> getPassword(@PathVariable("id") Integer id) {
         Map<String, String> res = null;
         Usuario usuario = findById(id);
