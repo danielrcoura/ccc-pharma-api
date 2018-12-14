@@ -9,7 +9,7 @@ public class Estoque {
 
     @Id
     @Column
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
     @ManyToOne
