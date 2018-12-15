@@ -26,8 +26,8 @@ public class EstoqueController {
         return estoqueService.findById(id);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/add")
-    public Estoque createEstoque(Estoque estoque) {
+    @RequestMapping(method = RequestMethod.POST, value = "/add")
+    public Estoque createEstoque(@RequestBody Estoque estoque) {
         return estoqueService.create(estoque);
     }
 }

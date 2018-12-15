@@ -1,11 +1,8 @@
 package com.cccpharmaapi.cccpharmaapi.controllers;
 
-import com.cccpharmaapi.cccpharmaapi.models.Venda;
 import com.cccpharmaapi.cccpharmaapi.models.VendaProduto;
 import com.cccpharmaapi.cccpharmaapi.services.VendaProdutoService;
-import com.cccpharmaapi.cccpharmaapi.services.VendaProdutoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

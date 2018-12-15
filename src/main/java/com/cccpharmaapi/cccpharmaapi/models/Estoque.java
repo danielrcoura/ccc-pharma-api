@@ -1,5 +1,7 @@
 package com.cccpharmaapi.cccpharmaapi.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -17,6 +19,8 @@ public class Estoque {
     private Produto produto;
 
     @Column
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt_BR", timezone = "Brazil/East")
     private Date validade;
 
     @Column

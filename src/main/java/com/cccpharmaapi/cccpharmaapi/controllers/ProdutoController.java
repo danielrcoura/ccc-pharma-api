@@ -35,16 +35,16 @@ public class ProdutoController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public Produto addProduto(Produto produto){
+    public Produto addProduto(@RequestBody Produto produto){
         return produtoService.create(produto);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/produtos/delete")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/delete")
     public void removeProduto(Produto produto){
-        produtoService.delete(produto);
+        produtoService.delete(produto.getCodigo());
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/produtos/update")
+    @RequestMapping(method = RequestMethod.POST, value = "/update")
     public Produto updateProduto(Produto produto) {
         return produtoService.update(produto);
     }

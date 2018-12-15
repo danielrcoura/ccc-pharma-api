@@ -2,9 +2,7 @@ package com.cccpharmaapi.cccpharmaapi.controllers;
 
 import com.cccpharmaapi.cccpharmaapi.models.Venda;
 import com.cccpharmaapi.cccpharmaapi.services.VendaService;
-import com.cccpharmaapi.cccpharmaapi.services.VendaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,8 +24,8 @@ public class VendaController {
         return vendaService.findById(id);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/add")
-    public Venda putVenda(Venda venda) {
+    @RequestMapping(method = RequestMethod.POST, value = "/add")
+    public Venda postVenda(@RequestBody Venda venda) {
         return vendaService.create(venda);
     }
 }

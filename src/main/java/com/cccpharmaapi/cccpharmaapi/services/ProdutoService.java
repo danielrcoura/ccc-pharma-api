@@ -13,7 +13,7 @@ public interface ProdutoService {
 
     Produto create(Produto produto);
 
-    void delete(Produto produto);
+    void delete(Integer produto);
 
     Produto update(Produto produto);
 }

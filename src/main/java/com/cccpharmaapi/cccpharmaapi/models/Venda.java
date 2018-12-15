@@ -1,5 +1,7 @@
 package com.cccpharmaapi.cccpharmaapi.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +22,8 @@ public class Venda {
     private List<VendaProduto> vendas;
 
     @Column
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt_BR", timezone = "Brazil/East")
     private Date data;
 
     public Integer getVendaId() {
