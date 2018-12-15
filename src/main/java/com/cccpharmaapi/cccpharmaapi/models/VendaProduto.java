@@ -20,7 +20,7 @@ public class VendaProduto {
     private Produto produto;
 
     @Column
-    private int quatidade;
+    private int quantidade;
 
     @Column
     private double subTotal;
@@ -49,12 +49,12 @@ public class VendaProduto {
         this.produto = produto;
     }
 
-    public int getQuatidade() {
-        return quatidade;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setQuatidade(int quatidade) {
-        this.quatidade = quatidade;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     public double getSubTotal() {

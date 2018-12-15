@@ -27,6 +27,6 @@ public class VendaProdutoController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/add")
     public VendaProduto putVenda(@RequestBody VendaProduto vendaProduto) {
-        return vendaProdutoService.create(vendaProduto);
+            return vendaProdutoService.create(vendaProduto);
     }
 }

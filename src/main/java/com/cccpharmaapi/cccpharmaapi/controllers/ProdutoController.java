@@ -39,7 +39,7 @@ public class ProdutoController {
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete")
     public void removeProduto(@RequestBody Produto produto){
-        produtoService.delete(produto.getCodigo());
+        produtoService.delete(produto.getId());
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/update")

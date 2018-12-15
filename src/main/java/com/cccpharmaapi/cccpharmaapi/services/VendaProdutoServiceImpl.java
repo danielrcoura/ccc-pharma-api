@@ -2,7 +2,6 @@ package com.cccpharmaapi.cccpharmaapi.services;
 
 import com.cccpharmaapi.cccpharmaapi.models.Estoque;
 import com.cccpharmaapi.cccpharmaapi.models.Produto;
-import com.cccpharmaapi.cccpharmaapi.models.Venda;
 import com.cccpharmaapi.cccpharmaapi.models.VendaProduto;
 import com.cccpharmaapi.cccpharmaapi.repositories.VendaProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,7 @@ public class VendaProdutoServiceImpl implements VendaProdutoService {
     public VendaProduto create(VendaProduto vendaProduto) {
         Produto produto = vendaProduto.getProduto();
         Estoque estoque = estoqueService.getEstoqueMenorValidade(produto);
-        boolean res = estoqueService.decrementaEstoque(estoque.getId(), vendaProduto.getQuatidade());
+        boolean res = estoqueService.decrementaEstoque(estoque.getId(), vendaProduto.getQuantidade());
         if (res) return vendaProdutoRepository.save(vendaProduto);
         else return null;
     }

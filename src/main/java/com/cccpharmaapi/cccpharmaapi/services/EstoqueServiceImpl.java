@@ -49,7 +49,9 @@ public class EstoqueServiceImpl implements EstoqueService {
             estoque.setQuantidade(newQuantidade);
             newQuantidade *= -1;
             if (newQuantidade > 0) {
-                List<Estoque> estoques = estoqueRepository.findEstoqueMenorValidade(estoqueId);
+                Optional<List<Estoque>> estoquesCostumer = estoqueRepository.findEstoqueMenorValidade(estoqueId);
+                List<Estoque> estoques = (estoquesCostumer.isPresent()) ? estoquesCostumer.get() : null;
+                if (estoques == null) return false;
                 int i = 0;
                 while (i < estoques.size() && estoques.get(i).getQuantidade() > 0) i++;
                 if (i < estoques.size()) decrementaEstoque(estoques.get(i).getId(), newQuantidade);
@@ -62,8 +64,10 @@ public class EstoqueServiceImpl implements EstoqueService {
 
     @Override
     public Estoque getEstoqueMenorValidade(Produto produto) {
-        List<Estoque> costumer = estoqueRepository.findEstoqueMenorValidade(produto.getCodigo());
-        Estoque res = (costumer.size() > 0) ? costumer.get(0) : null;
+        Integer codigo = produto.getId();
+        Optional<List<Estoque>> estoquesCostumer = estoqueRepository.findEstoqueMenorValidade(codigo);
+        List<Estoque> estoques = (estoquesCostumer.isPresent()) ? estoquesCostumer.get() : null;
+        Estoque res = (estoques.size() > 0) ? estoques.get(0) : null;
 
         return res;
     }
