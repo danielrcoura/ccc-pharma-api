@@ -38,12 +38,12 @@ public class ProdutoController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete")
-    public void removeProduto(Produto produto){
+    public void removeProduto(@RequestBody Produto produto){
         produtoService.delete(produto.getCodigo());
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/update")
-    public Produto updateProduto(Produto produto) {
+    public Produto updateProduto(@RequestBody Produto produto) {
         return produtoService.update(produto);
     }
 }

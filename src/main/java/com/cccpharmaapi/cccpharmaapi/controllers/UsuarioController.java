@@ -21,7 +21,7 @@ public class UsuarioController {
 
     @RequestMapping(method = RequestMethod.POST, value="/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public Usuario addUsuario(@RequestBody Usuario usuario) {
+       public Usuario addUsuario(@RequestBody Usuario usuario) {
         return usuarioService.create(usuario);
     }
 
