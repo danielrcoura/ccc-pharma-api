@@ -36,7 +36,8 @@ public class VendaProdutoServiceImpl implements VendaProdutoService {
     public VendaProduto create(VendaProduto vendaProduto) {
         Produto produto = vendaProduto.getProduto();
         Estoque estoque = estoqueService.getEstoqueMenorValidade(produto);
-        estoqueService.decrementaEstoque(estoque.getId(), vendaProduto.getQuatidade());
-        return vendaProdutoRepository.save(vendaProduto);
+        boolean res = estoqueService.decrementaEstoque(estoque.getId(), vendaProduto.getQuatidade());
+        if (res) return vendaProdutoRepository.save(vendaProduto);
+        else return null;
     }
 }

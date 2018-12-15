@@ -32,11 +32,6 @@ public class VendaServiceImpl implements VendaService {
 
     @Override
     public Venda create(Venda venda) {
-        List<VendaProduto> vendaProdutos = venda.getVendas();
-
-        for (VendaProduto vendaProduto : vendaProdutos)
-            vendaProdutoService.create(vendaProduto);
-
         return vendaRepository.save(venda);
     }
 }

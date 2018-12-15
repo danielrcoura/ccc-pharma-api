@@ -18,9 +18,6 @@ public class Venda {
     @Column
     private Double valorTotal;
 
-    @OneToMany(mappedBy = "venda")
-    private List<VendaProduto> vendas;
-
     @Column
     @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt_BR", timezone = "Brazil/East")
@@ -40,14 +37,6 @@ public class Venda {
 
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
-    }
-
-    public List<VendaProduto> getVendas() {
-        return vendas;
-    }
-
-    public void setVendas(List<VendaProduto> vendas) {
-        this.vendas = vendas;
     }
 
     public Date getData() {

@@ -39,7 +39,7 @@ public class EstoqueServiceImpl implements EstoqueService {
     }
 
     @Override
-    public void decrementaEstoque(Integer estoqueId, int valor) {
+    public boolean decrementaEstoque(Integer estoqueId, int valor) {
         Optional<Estoque> costumer = estoqueRepository.findById(estoqueId);
 
         if(costumer.isPresent()) {
@@ -47,8 +47,17 @@ public class EstoqueServiceImpl implements EstoqueService {
             int newQuantidade = estoque.getQuantidade() - valor;
             newQuantidade = (newQuantidade < 0) ? 0 : newQuantidade;
             estoque.setQuantidade(newQuantidade);
+            newQuantidade *= -1;
+            if (newQuantidade > 0) {
+                List<Estoque> estoques = estoqueRepository.findEstoqueMenorValidade(estoqueId);
+                int i = 0;
+                while (i < estoques.size() && estoques.get(i).getQuantidade() > 0) i++;
+                if (i < estoques.size()) decrementaEstoque(estoques.get(i).getId(), newQuantidade);
+                else return false;
+            }
             this.update(estoque);
-        }
+            return true;
+        } else return false;
     }
 
     @Override
