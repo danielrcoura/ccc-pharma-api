@@ -16,8 +16,6 @@ public class VendaProdutoServiceImpl implements VendaProdutoService {
     @Autowired
     private VendaProdutoRepository vendaProdutoRepository;
 
-    private EstoqueService estoqueService = new EstoqueServiceImpl();
-
     @Override
     public List<VendaProduto> findAll() {
         return vendaProdutoRepository.findAll();
@@ -33,10 +31,6 @@ public class VendaProdutoServiceImpl implements VendaProdutoService {
 
     @Override
     public VendaProduto create(VendaProduto vendaProduto) {
-        Produto produto = vendaProduto.getProduto();
-        Estoque estoque = estoqueService.getEstoqueMenorValidade(produto);
-        boolean res = estoqueService.decrementaEstoque(estoque.getId(), vendaProduto.getQuantidade());
-        if (res) return vendaProdutoRepository.save(vendaProduto);
-        else return null;
+        return vendaProdutoRepository.save(vendaProduto);
     }
 }

@@ -1,11 +1,13 @@
 package com.cccpharmaapi.cccpharmaapi.services;
 
+import com.cccpharmaapi.cccpharmaapi.Util.EstoqueComparator;
 import com.cccpharmaapi.cccpharmaapi.models.Estoque;
 import com.cccpharmaapi.cccpharmaapi.models.Produto;
 import com.cccpharmaapi.cccpharmaapi.repositories.EstoqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,20 +40,34 @@ public class EstoqueServiceImpl implements EstoqueService {
         return estoqueRepository.saveAndFlush(estoque);
     }
 
+    /*
+    public List<Estoque> findEstoqueMenorValidade(Integer produtoId) {
+        List<Estoque> estoques = this.findAll();
+        List<Estoque> estoqueProduto = new ArrayList<>();
+        for (Estoque estoque : estoques) {
+            if (estoque.getProduto().getId() == produtoId) {
+                estoqueProduto.add(estoque);
+            }
+        }
+        EstoqueComparator comparator = new EstoqueComparator();
+        estoqueProduto.sort(comparator);
+        return estoqueProduto;
+    }
+
     @Override
     public boolean decrementaEstoque(Integer estoqueId, int valor) {
         Optional<Estoque> costumer = estoqueRepository.findById(estoqueId);
 
         if(costumer.isPresent()) {
             Estoque estoque = costumer.get();
+            Integer productId = estoque.getProduto().getId();
             int newQuantidade = estoque.getQuantidade() - valor;
             newQuantidade = (newQuantidade < 0) ? 0 : newQuantidade;
             estoque.setQuantidade(newQuantidade);
             newQuantidade *= -1;
             if (newQuantidade > 0) {
-                Optional<List<Estoque>> estoquesCostumer = estoqueRepository.findEstoqueMenorValidade(estoqueId);
-                List<Estoque> estoques = (estoquesCostumer.isPresent()) ? estoquesCostumer.get() : null;
-                if (estoques == null) return false;
+                List<Estoque> estoques = findEstoqueMenorValidade(productId);
+                if (estoques.size() == 0) return false;
                 int i = 0;
                 while (i < estoques.size() && estoques.get(i).getQuantidade() > 0) i++;
                 if (i < estoques.size()) decrementaEstoque(estoques.get(i).getId(), newQuantidade);
@@ -64,11 +80,11 @@ public class EstoqueServiceImpl implements EstoqueService {
 
     @Override
     public Estoque getEstoqueMenorValidade(Produto produto) {
-        Integer codigo = produto.getId();
-        Optional<List<Estoque>> estoquesCostumer = estoqueRepository.findEstoqueMenorValidade(codigo);
-        List<Estoque> estoques = (estoquesCostumer.isPresent()) ? estoquesCostumer.get() : null;
+        Integer produtoid = produto.getId();
+        List<Estoque> estoques = findEstoqueMenorValidade(produtoid);
         Estoque res = (estoques.size() > 0) ? estoques.get(0) : null;
 
         return res;
     }
+    */
 }

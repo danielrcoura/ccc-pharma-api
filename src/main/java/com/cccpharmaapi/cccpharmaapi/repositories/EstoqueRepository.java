@@ -12,6 +12,6 @@ import java.util.Optional;
 @Repository
 public interface EstoqueRepository extends JpaRepository<Estoque, Integer>{
 
-    @Query(value = "SELECT * FROM estoques WHERE codigo_id =:codigo ORDER BY validade ASC;", nativeQuery = true)
-    Optional<List<Estoque>> findEstoqueMenorValidade(@Param("codigo") int codigo);
+    /*@Query(value = "SELECT * FROM estoques WHERE codigo_id =:codigo ORDER BY validade ASC;", nativeQuery = true)
+    Optional<List<Estoque>> findEstoqueMenorValidade(@Param("codigo") int codigo);*/
 }

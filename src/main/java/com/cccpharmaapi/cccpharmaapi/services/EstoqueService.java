@@ -14,8 +14,4 @@ public interface EstoqueService {
     Estoque create(Estoque estoque);
 
     Estoque update(Estoque estoque);
-
-    boolean decrementaEstoque(Integer estoqueId, int valor);
-
-    Estoque getEstoqueMenorValidade(Produto produto);
 }

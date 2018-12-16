@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "estoques")
-public class Estoque {
+public class Estoque implements Comparable<Estoque>{
 
     @Id
     @Column
@@ -15,7 +15,7 @@ public class Estoque {
     private int id;
 
     @ManyToOne
-    @JoinColumn( name = "codigo_id")
+    @JoinColumn( name = "product_id")
     private Produto produto;
 
     @Column
@@ -52,5 +52,10 @@ public class Estoque {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    @Override
+    public int compareTo(Estoque estoque) {
+        return this.validade.compareTo(estoque.validade);
     }
 }
