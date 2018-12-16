@@ -18,7 +18,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @RequestMapping(method = RequestMethod.POST, value="/add")
+    @RequestMapping(method = RequestMethod.POST, value="/")
     @ResponseStatus(HttpStatus.CREATED)
        public Usuario addUsuario(@RequestBody Usuario usuario) {
         return usuarioService.create(usuario);
@@ -46,7 +46,7 @@ public class UsuarioController {
         Usuario usuario = findById(id);
 
         if (usuario != null) {
-            res.put(usuario.getLogin(), usuario.getPassword());
+            res.put(usuario.getUsername(), usuario.getPassword());
         }
 
         return res;
