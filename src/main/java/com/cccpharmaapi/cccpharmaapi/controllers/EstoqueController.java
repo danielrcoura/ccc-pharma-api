@@ -10,7 +10,7 @@ import javax.annotation.security.PermitAll;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://ccc-pharma.herokuapp.com")
+@CrossOrigin
 @RequestMapping("/estoques")
 public class EstoqueController {
 
