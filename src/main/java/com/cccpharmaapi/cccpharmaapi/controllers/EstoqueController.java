@@ -10,7 +10,6 @@ import javax.annotation.security.PermitAll;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/estoques")
 public class EstoqueController {
 
