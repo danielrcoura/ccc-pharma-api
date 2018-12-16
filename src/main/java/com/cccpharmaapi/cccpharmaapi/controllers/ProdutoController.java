@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://ccc-pharma.herokuapp.com")
 @RequestMapping("/produtos")
 public class ProdutoController {
 

@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://ccc-pharma.herokuapp.com")
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
