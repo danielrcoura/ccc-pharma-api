@@ -14,7 +14,7 @@ public class VendaController {
     @Autowired
     private VendaService vendaService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/all")
+    @RequestMapping(method = RequestMethod.GET, value = "/")
     public List<Venda> getAllVendas() {
         return vendaService.findAll();
     }
@@ -24,7 +24,7 @@ public class VendaController {
         return vendaService.findById(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/add")
+    @RequestMapping(method = RequestMethod.POST, value = "/")
     public Venda postVenda(@RequestBody Venda venda) {
         return vendaService.create(venda);
     }

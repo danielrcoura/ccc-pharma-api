@@ -16,7 +16,7 @@ public class ProdutoController {
     @Autowired
     private ProdutoService produtoService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/all")
+    @RequestMapping(method = RequestMethod.GET, value = "/")
     public List<Produto> findAll(){
         return produtoService.findAll();
     }
@@ -31,18 +31,18 @@ public class ProdutoController {
         return res;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/add")
+    @RequestMapping(method = RequestMethod.POST, value = "/")
     @ResponseStatus(HttpStatus.CREATED)
     public Produto addProduto(@RequestBody Produto produto){
         return produtoService.create(produto);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/delete")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/")
     public void removeProduto(@RequestBody Produto produto){
         produtoService.delete(produto.getId());
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/update")
+    @RequestMapping(method = RequestMethod.PUT, value = "/")
     public Produto updateProduto(@RequestBody Produto produto) {
         return produtoService.update(produto);
     }

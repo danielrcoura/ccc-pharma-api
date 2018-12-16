@@ -25,7 +25,7 @@ public class UsuarioController {
         return usuarioService.create(usuario);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value="/all")
+    @RequestMapping(method = RequestMethod.GET, value="/")
     public List<Usuario> findAll() {
         return usuarioService.findAll();
     }

@@ -1,7 +1,6 @@
 package com.cccpharmaapi.cccpharmaapi.services;
 
 import com.cccpharmaapi.cccpharmaapi.models.Estoque;
-import com.cccpharmaapi.cccpharmaapi.models.Produto;
 
 import java.util.List;
 

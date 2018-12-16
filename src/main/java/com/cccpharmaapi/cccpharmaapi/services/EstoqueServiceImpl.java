@@ -1,13 +1,10 @@
 package com.cccpharmaapi.cccpharmaapi.services;
 
-import com.cccpharmaapi.cccpharmaapi.Util.EstoqueComparator;
 import com.cccpharmaapi.cccpharmaapi.models.Estoque;
-import com.cccpharmaapi.cccpharmaapi.models.Produto;
 import com.cccpharmaapi.cccpharmaapi.repositories.EstoqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
