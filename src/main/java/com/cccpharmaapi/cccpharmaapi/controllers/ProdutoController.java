@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.integration.annotation.Role;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,11 +20,13 @@ public class ProdutoController {
     private ProdutoService produtoService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/")
+    @PermitAll
     public List<Produto> findAll(){
         return produtoService.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    @PermitAll
     public Produto findById(@PathVariable("id") Integer id){
         Produto res = null;
         Optional<Produto> produto = produtoService.findById(id);

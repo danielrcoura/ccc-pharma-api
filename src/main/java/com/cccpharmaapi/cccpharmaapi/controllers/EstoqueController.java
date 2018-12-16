@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.annotation.Role;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
 import java.util.List;
 
 @RestController
@@ -17,11 +18,13 @@ public class EstoqueController {
     private EstoqueService estoqueService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/")
+    @PermitAll
     public List<Estoque> getEstoqueAll() {
         return estoqueService.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    @PermitAll
     public Estoque getEstoqueById(@PathVariable("id") Integer id) {
         return estoqueService.findById(id);
     }

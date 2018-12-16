@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.integration.annotation.Role;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -21,7 +22,8 @@ public class UsuarioController {
 
     @RequestMapping(method = RequestMethod.POST, value="/")
     @ResponseStatus(HttpStatus.CREATED)
-       public Usuario addUsuario(@RequestBody Usuario usuario) {
+    @PermitAll
+    public Usuario addUsuario(@RequestBody Usuario usuario) {
         return usuarioService.create(usuario);
     }
 
