@@ -4,6 +4,7 @@ import com.cccpharmaapi.cccpharmaapi.models.Produto;
 import com.cccpharmaapi.cccpharmaapi.services.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.integration.annotation.Role;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,16 +35,19 @@ public class ProdutoController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/")
     @ResponseStatus(HttpStatus.CREATED)
+    @Role("ADMIN")
     public Produto addProduto(@RequestBody Produto produto){
         return produtoService.create(produto);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/")
+    @Role("ADMIN")
     public void removeProduto(@RequestBody Produto produto){
         produtoService.delete(produto.getId());
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/")
+    @Role("ADMIN")
     public Produto updateProduto(@RequestBody Produto produto) {
         return produtoService.update(produto);
     }
