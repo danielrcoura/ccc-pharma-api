@@ -56,4 +56,19 @@ public class UsuarioController {
 
         return res;
     }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/login")
+    @PermitAll
+    public boolean loginUser(@RequestBody Usuario usuario){
+        List<Usuario> usuarios = usuarioService.findAll();
+        Boolean res = false;
+        for(Usuario user : usuarios) {
+            if (user.getUsername().equals(usuario.getUsername())) {
+                res = user.getPassword().equals(usuario.getPassword());
+                break;
+            }
+        }
+
+        return res;
+    }
 }
